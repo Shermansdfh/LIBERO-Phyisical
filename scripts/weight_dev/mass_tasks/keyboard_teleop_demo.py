@@ -151,6 +151,20 @@ def _format_masses(masses: dict[str, float | None]) -> str:
     )
 
 
+def _add_viewer_callback(viewer: Any, method_name: str, callback: Any) -> None:
+    method = getattr(viewer, method_name)
+    try:
+        method("any", callback)
+    except TypeError:
+        method(callback)
+
+
+def _register_keyboard_callbacks(viewer: Any, device: Any) -> None:
+    _add_viewer_callback(viewer, "add_keypress_callback", device.on_press)
+    _add_viewer_callback(viewer, "add_keyup_callback", device.on_release)
+    _add_viewer_callback(viewer, "add_keyrepeat_callback", device.on_press)
+
+
 def _save_hdf5(
     directory: str | Path,
     out_path: str | Path,
@@ -263,9 +277,7 @@ def main() -> None:
         pos_sensitivity=args.pos_sensitivity,
         rot_sensitivity=args.rot_sensitivity,
     )
-    env.viewer.add_keypress_callback("any", device.on_press)
-    env.viewer.add_keyup_callback("any", device.on_release)
-    env.viewer.add_keyrepeat_callback("any", device.on_press)
+    _register_keyboard_callbacks(env.viewer, device)
 
     env.reset()
 
