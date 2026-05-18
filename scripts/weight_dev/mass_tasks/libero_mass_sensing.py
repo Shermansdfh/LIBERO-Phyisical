@@ -26,11 +26,9 @@ try:
 except ImportError:
     import object as _custom_objects  # type: ignore[no-redef]  # noqa: F401
 
-from libero.libero.envs.bddl_base_domain import register_problem  # noqa: E402
+from libero.libero.envs.bddl_base_domain import TASK_MAPPING, register_problem  # noqa: E402
 from libero.libero.envs.env_wrapper import OffScreenRenderEnv  # noqa: E402
-from libero.libero.envs.problems.libero_tabletop_manipulation import (  # noqa: E402
-    Libero_Tabletop_Manipulation,
-)
+import libero.libero.envs.problems.libero_tabletop_manipulation  # noqa: E402,F401
 
 
 DEFAULT_BDDL_FILE = (
@@ -38,9 +36,14 @@ DEFAULT_BDDL_FILE = (
 )
 
 
-@register_problem
+Libero_Tabletop_Manipulation = TASK_MAPPING["libero_tabletop_manipulation"]
+
+
 class Empty_Mug_Mass_Sensing(Libero_Tabletop_Manipulation):
     """Custom tabletop task registered from ``empty_mug_mass_sensing`` BDDL."""
+
+
+register_problem(Empty_Mug_Mass_Sensing)
 
 
 class MassSensingEnv:
