@@ -28,6 +28,7 @@ except ImportError:
 
 from libero.libero.envs.bddl_base_domain import TASK_MAPPING, register_problem  # noqa: E402
 from libero.libero.envs.env_wrapper import OffScreenRenderEnv  # noqa: E402
+from libero.libero.envs.regions import REGION_SAMPLERS  # noqa: E402
 import libero.libero.envs.problems.libero_tabletop_manipulation  # noqa: E402,F401
 
 
@@ -44,6 +45,9 @@ class Empty_Mug_Mass_Sensing(Libero_Tabletop_Manipulation):
 
 
 register_problem(Empty_Mug_Mass_Sensing)
+REGION_SAMPLERS["empty_mug_mass_sensing"] = REGION_SAMPLERS[
+    "libero_tabletop_manipulation"
+]
 
 
 class MassSensingEnv:
