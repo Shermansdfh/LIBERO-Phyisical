@@ -151,16 +151,35 @@ def _format_masses(masses: dict[str, float | None]) -> str:
     )
 
 
-def _add_viewer_callback(viewer: Any, method_name: str, callback: Any) -> None:
-    method = getattr(viewer, method_name)
+def _add_viewer_callback(
+    viewer: Any,
+    method_name: str,
+    callback: Any,
+    *,
+    required: bool = False,
+) -> bool:
+    method = getattr(viewer, method_name, None)
+    if method is None:
+        if required:
+            raise AttributeError(
+                f"{type(viewer).__name__} does not expose {method_name}"
+            )
+        return False
+
     try:
         method("any", callback)
     except TypeError:
         method(callback)
+    return True
 
 
 def _register_keyboard_callbacks(viewer: Any, device: Any) -> None:
-    _add_viewer_callback(viewer, "add_keypress_callback", device.on_press)
+    _add_viewer_callback(
+        viewer,
+        "add_keypress_callback",
+        device.on_press,
+        required=True,
+    )
     _add_viewer_callback(viewer, "add_keyup_callback", device.on_release)
     _add_viewer_callback(viewer, "add_keyrepeat_callback", device.on_press)
 
