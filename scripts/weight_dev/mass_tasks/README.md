@@ -13,8 +13,35 @@ python scripts/weight_dev/mass_tasks/keyboard_teleop_demo.py \
   --out outputs/empty_mug_keyboard_demo.hdf5
 ```
 
-This opens the robosuite MuJoCo viewer, lets you control the Panda arm with the
-keyboard, and saves the demo after the task succeeds.
+This opens the robosuite GLFW/MjViewer window, lets you control the Panda arm
+with the keyboard, and saves the demo after the task succeeds.
+
+## WSL GUI Note
+
+Keyboard teleop needs a working Linux GUI. On WSL, use WSLg or an X server. If
+OpenCV crashes with a Qt `xcb` plugin error, keep the default `--renderer
+mjviewer`; it avoids OpenCV's Qt window path. If you explicitly run
+`--renderer mujoco`, install the missing XCB runtime libraries:
+
+```bash
+sudo apt update
+sudo apt install -y \
+  libxcb-xinerama0 \
+  libxcb-cursor0 \
+  libxkbcommon-x11-0 \
+  libxcb-icccm4 \
+  libxcb-image0 \
+  libxcb-keysyms1 \
+  libxcb-randr0 \
+  libxcb-render-util0
+```
+
+Then reopen the terminal and rerun the teleop command. Check that a display is
+visible to WSL with:
+
+```bash
+echo $DISPLAY
+```
 
 ## Mass Reveal
 
@@ -40,6 +67,7 @@ still works.
 ```bash
 --bddl-file        task BDDL path
 --camera           viewer camera, default agentview
+--renderer         on-screen renderer, default mjviewer
 --max-steps        collection step limit
 --grip-duration    seconds of gripper contact before reveal
 --lift-duration    seconds lifted before reveal

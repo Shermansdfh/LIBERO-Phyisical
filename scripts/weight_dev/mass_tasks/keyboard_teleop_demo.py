@@ -4,6 +4,7 @@ import argparse
 import datetime as dt
 import json
 import os
+import platform
 import sys
 from glob import glob
 from pathlib import Path
@@ -184,6 +185,30 @@ def _register_keyboard_callbacks(viewer: Any, device: Any) -> None:
     _add_viewer_callback(viewer, "add_keyrepeat_callback", device.on_press)
 
 
+def _looks_like_wsl() -> bool:
+    release = platform.uname().release.lower()
+    return "microsoft" in release or "wsl" in release
+
+
+def _check_display_environment() -> None:
+    if sys.platform != "linux":
+        return
+    if os.environ.get("DISPLAY") or os.environ.get("WAYLAND_DISPLAY"):
+        return
+
+    hint = (
+        "No Linux display was detected. Keyboard teleop needs a GUI display. "
+        "In WSL, run from WSLg or start an X server and export DISPLAY before "
+        "launching this script."
+    )
+    if _looks_like_wsl():
+        hint += (
+            " If DISPLAY is set but OpenCV later reports a Qt xcb plugin error, "
+            "install the xcb runtime packages listed in README.md."
+        )
+    raise RuntimeError(hint)
+
+
 def _save_hdf5(
     directory: str | Path,
     out_path: str | Path,
@@ -240,6 +265,11 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--out", default="outputs/empty_mug_keyboard_demo.hdf5")
     parser.add_argument("--tmp-dir", default="outputs/empty_mug_keyboard_demo_raw")
     parser.add_argument("--camera", default="agentview")
+    parser.add_argument(
+        "--renderer",
+        default="mjviewer",
+        help="On-screen renderer. Use mjviewer for GLFW; mujoco uses OpenCV.",
+    )
     parser.add_argument("--controller", default="OSC_POSE")
     parser.add_argument("--pos-sensitivity", type=float, default=1.5)
     parser.add_argument("--rot-sensitivity", type=float, default=1.0)
@@ -259,6 +289,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
 
 def main() -> None:
     args = build_arg_parser().parse_args()
+    _check_display_environment()
     deps = _load_runtime_dependencies()
     BDDLUtils = deps["BDDLUtils"]
     DataCollectionWrapper = deps["DataCollectionWrapper"]
@@ -283,6 +314,7 @@ def main() -> None:
         **config,
         has_renderer=True,
         has_offscreen_renderer=False,
+        renderer=args.renderer,
         render_camera=args.camera,
         ignore_done=True,
         use_camera_obs=False,
