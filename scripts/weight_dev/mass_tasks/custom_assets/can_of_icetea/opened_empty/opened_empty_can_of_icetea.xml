@@ -1,7 +1,7 @@
 <mujoco model="opened_empty_can_of_icetea">
   <asset>
     <mesh name="opened_empty_can_of_icetea_body_visual" file="../ifrjsc/opened_body.obj" scale="1 1 1"/>
-    <mesh name="opened_empty_can_of_icetea_lid_visual" file="../ifrjsc/opened_lid.obj" scale="1 1 1"/>
+    <mesh name="opened_empty_can_of_icetea_lid_visual" file="../ifrjsc/opened_solidfy_lid.obj" scale="1 1 1"/>
     <texture name="opened_empty_can_of_icetea_tex" file="../ifrjsc/usd/MJCF/visuals/ifrjsc__base_link__diffuse.png" type="2d"/>
     <material name="opened_empty_can_of_icetea_mat" texture="opened_empty_can_of_icetea_tex" reflectance="0.5" texrepeat="1 1" texuniform="false"/>
   </asset>
