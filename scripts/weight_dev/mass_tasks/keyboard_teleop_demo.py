@@ -211,6 +211,17 @@ def _check_display_environment() -> None:
     raise RuntimeError(hint)
 
 
+def _normalize_renderer(renderer: str) -> str:
+    renderer = renderer.lower()
+    if renderer == "mjviewer":
+        print(
+            "[renderer] 'mjviewer' is a legacy name; using robosuite's 'mujoco' viewer.",
+            flush=True,
+        )
+        return "mujoco"
+    return renderer
+
+
 def _save_hdf5(
     directory: str | Path,
     out_path: str | Path,
@@ -269,8 +280,8 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--camera", default="agentview")
     parser.add_argument(
         "--renderer",
-        default="mjviewer",
-        help="On-screen renderer. Use mjviewer for GLFW; mujoco uses OpenCV.",
+        default="mujoco",
+        help="On-screen renderer. Use mujoco for keyboard teleop; mjviewer is accepted as a legacy alias.",
     )
     parser.add_argument("--controller", default="OSC_POSE")
     parser.add_argument("--pos-sensitivity", type=float, default=1.5)
@@ -309,6 +320,7 @@ def main() -> None:
     problem_name = problem_info["problem_name"]
     controller_config = load_controller_config(default_controller=args.controller)
     config = {"robots": ["Panda"], "controller_configs": controller_config}
+    renderer = _normalize_renderer(args.renderer)
 
     print(problem_info["language_instruction"], flush=True)
     env = TASK_MAPPING[problem_name](
@@ -316,7 +328,7 @@ def main() -> None:
         **config,
         has_renderer=True,
         has_offscreen_renderer=False,
-        renderer=args.renderer,
+        renderer=renderer,
         render_camera=args.camera,
         ignore_done=True,
         use_camera_obs=False,
