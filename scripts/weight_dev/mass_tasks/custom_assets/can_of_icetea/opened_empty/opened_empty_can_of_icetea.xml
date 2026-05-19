@@ -1,0 +1,33 @@
+<mujoco model="opened_empty_can_of_icetea">
+  <asset>
+    <mesh name="opened_empty_can_of_icetea_visual" file="../ifrjsc/opened.obj" scale="1 1 1"/>
+    <texture name="opened_empty_can_of_icetea_tex" file="../ifrjsc/usd/MJCF/visuals/ifrjsc__base_link__diffuse.png" type="2d"/>
+    <material name="opened_empty_can_of_icetea_mat" texture="opened_empty_can_of_icetea_tex" reflectance="0.5" texrepeat="1 1" texuniform="false"/>
+  </asset>
+  <worldbody>
+    <body>
+      <body name="object">
+        <inertial pos="0 0 0.002326" mass="0.035" diaginertia="0.000076 0.000076 0.000023"/>
+        <geom
+          type="mesh"
+          mesh="opened_empty_can_of_icetea_visual"
+          material="opened_empty_can_of_icetea_mat"
+          group="1"
+          contype="0"
+          conaffinity="0"
+        />
+        <geom
+          type="cylinder"
+          size="0.036 0.074623"
+          pos="0 0 0.002326"
+          group="0"
+          solimp="0.998 0.998 0.001"
+          solref="0.001 1"
+        />
+      </body>
+      <site rgba="0 0 0 0" size="0.005" pos="0 0 -0.072297" name="bottom_site"/>
+      <site rgba="0 0 0 0" size="0.005" pos="0 0 0.120861" name="top_site"/>
+      <site rgba="0 0 0 0" size="0.005" pos="0.036 0 0.002326" name="horizontal_radius_site"/>
+    </body>
+  </worldbody>
+</mujoco>

@@ -261,7 +261,7 @@ def object_names_from_problem(problem_info: dict[str, Any]) -> list[str]:
     return sorted(
         str(name)
         for category, names in objects.items()
-        if "mug" in str(category)
+        if "can_of_icetea" in str(category)
         for name in names
     )
 

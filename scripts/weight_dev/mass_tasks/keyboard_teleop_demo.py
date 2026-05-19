@@ -13,13 +13,13 @@ from typing import Any
 import numpy as np
 
 DEFAULT_BDDL_FILE = (
-    Path(__file__).resolve().parent / "bddl" / "put_empty_mug_in_basket.bddl"
+    Path(__file__).resolve().parent / "bddl" / "put_opened_empty_can_in_basket.bddl"
 )
 
 
 def _load_runtime_dependencies() -> dict[str, Any]:
     try:
-        from .libero_mass_sensing import Empty_Mug_Mass_Sensing
+        from .libero_mass_sensing import Opened_Empty_Can_Mass_Sensing
         from .mass_sensing_utils import MassSensingTracker, object_names_from_problem
         from .object import ensure_libero_import_path
     except ImportError:
@@ -27,14 +27,16 @@ def _load_runtime_dependencies() -> dict[str, Any]:
         if os.fspath(current_dir) not in sys.path:
             sys.path.insert(0, os.fspath(current_dir))
 
-        from libero_mass_sensing import Empty_Mug_Mass_Sensing  # type: ignore[no-redef]
+        from libero_mass_sensing import (  # type: ignore[no-redef]
+            Opened_Empty_Can_Mass_Sensing,
+        )
         from mass_sensing_utils import (  # type: ignore[no-redef]
             MassSensingTracker,
             object_names_from_problem,
         )
         from object import ensure_libero_import_path  # type: ignore[no-redef]
 
-    del Empty_Mug_Mass_Sensing
+    del Opened_Empty_Can_Mass_Sensing
     ensure_libero_import_path()
 
     import libero.libero.envs.bddl_utils as BDDLUtils
@@ -259,11 +261,11 @@ def _save_hdf5(
 
 def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Collect a keyboard teleop demo for the empty-mug mass task."
+        description="Collect a keyboard teleop demo for the can-of-icetea mass task."
     )
     parser.add_argument("--bddl-file", default=os.fspath(DEFAULT_BDDL_FILE))
-    parser.add_argument("--out", default="outputs/empty_mug_keyboard_demo.hdf5")
-    parser.add_argument("--tmp-dir", default="outputs/empty_mug_keyboard_demo_raw")
+    parser.add_argument("--out", default="outputs/opened_empty_can_keyboard_demo.hdf5")
+    parser.add_argument("--tmp-dir", default="outputs/opened_empty_can_keyboard_demo_raw")
     parser.add_argument("--camera", default="agentview")
     parser.add_argument(
         "--renderer",

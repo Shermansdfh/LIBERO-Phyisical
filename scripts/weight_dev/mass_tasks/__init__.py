@@ -2,18 +2,18 @@
 
 from .libero_mass_sensing import (
     DEFAULT_BDDL_FILE,
-    Empty_Mug_Mass_Sensing,
     FrankaLiberoMassSensingEnv,
     MassSensingEnv,
+    Opened_Empty_Can_Mass_Sensing,
 )
-from .object import EmptyLiberoMugYellow, LiberoMug, LiberoMugYellow
+from .object import CanOfIcetea, OpenedEmptyCanOfIcetea, OpenedLightCanOfIcetea
 
 __all__ = [
+    "CanOfIcetea",
     "DEFAULT_BDDL_FILE",
-    "EmptyLiberoMugYellow",
-    "Empty_Mug_Mass_Sensing",
     "FrankaLiberoMassSensingEnv",
-    "LiberoMug",
-    "LiberoMugYellow",
     "MassSensingEnv",
+    "OpenedEmptyCanOfIcetea",
+    "OpenedLightCanOfIcetea",
+    "Opened_Empty_Can_Mass_Sensing",
 ]

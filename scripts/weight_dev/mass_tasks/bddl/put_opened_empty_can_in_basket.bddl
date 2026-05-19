@@ -1,0 +1,86 @@
+(define (problem opened_empty_can_mass_sensing)
+  (:domain robosuite)
+  (:language identify the extremely light opened can by mass and put it into the basket)
+
+  (:regions
+    (basket_init_region
+      (:target main_table)
+      (:ranges (
+        (0.22 0.21 0.27 0.26)
+      ))
+      (:yaw_rotation (
+        (0.0 0.0)
+      ))
+    )
+    (unopened_can_left_init_region
+      (:target main_table)
+      (:ranges (
+        (-0.30 -0.09 -0.26 -0.05)
+      ))
+      (:yaw_rotation (
+        (0.0 0.0)
+      ))
+    )
+    (unopened_can_right_init_region
+      (:target main_table)
+      (:ranges (
+        (-0.18 -0.09 -0.14 -0.05)
+      ))
+      (:yaw_rotation (
+        (0.0 0.0)
+      ))
+    )
+    (opened_light_can_init_region
+      (:target main_table)
+      (:ranges (
+        (-0.06 -0.09 -0.02 -0.05)
+      ))
+      (:yaw_rotation (
+        (0.0 0.0)
+      ))
+    )
+    (opened_empty_can_init_region
+      (:target main_table)
+      (:ranges (
+        (0.06 -0.09 0.10 -0.05)
+      ))
+      (:yaw_rotation (
+        (0.0 0.0)
+      ))
+    )
+    (contain_region
+      (:target basket_1)
+    )
+  )
+
+  (:fixtures
+    main_table - table
+  )
+
+  (:objects
+    unopened_can_1 unopened_can_2 - can_of_icetea
+    opened_light_can_1 - opened_light_can_of_icetea
+    opened_empty_can_1 - opened_empty_can_of_icetea
+    basket_1 - basket
+  )
+
+  (:obj_of_interest
+    unopened_can_1
+    unopened_can_2
+    opened_light_can_1
+    opened_empty_can_1
+    basket_1
+  )
+
+  (:init
+    (On unopened_can_1 main_table_unopened_can_left_init_region)
+    (On unopened_can_2 main_table_unopened_can_right_init_region)
+    (On opened_light_can_1 main_table_opened_light_can_init_region)
+    (On opened_empty_can_1 main_table_opened_empty_can_init_region)
+    (On basket_1 main_table_basket_init_region)
+  )
+
+  (:goal
+    (And (In opened_empty_can_1 basket_1_contain_region))
+  )
+)

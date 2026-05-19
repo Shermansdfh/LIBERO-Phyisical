@@ -33,19 +33,19 @@ import libero.libero.envs.problems.libero_tabletop_manipulation  # noqa: E402,F4
 
 
 DEFAULT_BDDL_FILE = (
-    Path(__file__).resolve().parent / "bddl" / "put_empty_mug_in_basket.bddl"
+    Path(__file__).resolve().parent / "bddl" / "put_opened_empty_can_in_basket.bddl"
 )
 
 
 Libero_Tabletop_Manipulation = TASK_MAPPING["libero_tabletop_manipulation"]
 
 
-class Empty_Mug_Mass_Sensing(Libero_Tabletop_Manipulation):
-    """Custom tabletop task registered from ``empty_mug_mass_sensing`` BDDL."""
+class Opened_Empty_Can_Mass_Sensing(Libero_Tabletop_Manipulation):
+    """Custom tabletop task registered from ``opened_empty_can_mass_sensing`` BDDL."""
 
 
-register_problem(Empty_Mug_Mass_Sensing)
-REGION_SAMPLERS["empty_mug_mass_sensing"] = REGION_SAMPLERS[
+register_problem(Opened_Empty_Can_Mass_Sensing)
+REGION_SAMPLERS["opened_empty_can_mass_sensing"] = REGION_SAMPLERS[
     "libero_tabletop_manipulation"
 ]
 
@@ -154,7 +154,7 @@ class FrankaLiberoMassSensingEnv(MassSensingEnv):
 
 __all__ = [
     "DEFAULT_BDDL_FILE",
-    "Empty_Mug_Mass_Sensing",
     "FrankaLiberoMassSensingEnv",
     "MassSensingEnv",
+    "Opened_Empty_Can_Mass_Sensing",
 ]
