@@ -1,6 +1,7 @@
 <mujoco model="opened_light_can_of_icetea">
   <asset>
-    <mesh name="opened_light_can_of_icetea_visual" file="../ifrjsc/opened_solidfy.obj" scale="1 1 1"/>
+    <mesh name="opened_light_can_of_icetea_body_visual" file="../ifrjsc/opened_solidfy_body.obj" scale="1 1 1"/>
+    <mesh name="opened_light_can_of_icetea_lid_visual" file="../ifrjsc/opened_solidfy_lid.obj" scale="1 1 1"/>
     <texture name="opened_light_can_of_icetea_tex" file="../ifrjsc/usd/MJCF/visuals/ifrjsc__base_link__diffuse.png" type="2d"/>
     <material name="opened_light_can_of_icetea_mat" texture="opened_light_can_of_icetea_tex" reflectance="0.5" texrepeat="1 1" texuniform="false"/>
   </asset>
@@ -10,7 +11,15 @@
         <inertial pos="0 0 0.002326" mass="0.315" diaginertia="0.000687 0.000687 0.000204"/>
         <geom
           type="mesh"
-          mesh="opened_light_can_of_icetea_visual"
+          mesh="opened_light_can_of_icetea_body_visual"
+          material="opened_light_can_of_icetea_mat"
+          group="1"
+          contype="0"
+          conaffinity="0"
+        />
+        <geom
+          type="mesh"
+          mesh="opened_light_can_of_icetea_lid_visual"
           material="opened_light_can_of_icetea_mat"
           group="1"
           contype="0"
