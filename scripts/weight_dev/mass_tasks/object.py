@@ -137,6 +137,24 @@ class FiftyCupWithStrawLight(_CustomCanObject):
         self.category_name = "50_cup_with_straw_light"
 
 
+class FiftyCupWithStrawHeavy(_CustomCanObject):
+    """Heavy 50-cup asset with a lid and straw."""
+
+    def __init__(
+        self,
+        name: str = "50_cup_with_straw_heavy",
+        joints: list[dict[str, Any]] | None = None,
+    ) -> None:
+        super().__init__(
+            LOCAL_ASSET_DIR
+            / "50_cup_with_straw_heavy"
+            / "50_cup_with_straw_heavy.xml",
+            name=name,
+            joints=joints,
+        )
+        self.category_name = "50_cup_with_straw_heavy"
+
+
 class OpenedLightCanOfIcetea(_CustomCanObject):
     """Opened can-of-icetea asset with 90% of the unopened can mass."""
 
@@ -180,6 +198,7 @@ OBJECTS_DICT.update(
         "50_cup": FiftyCup,
         "50_cup_no_straw": FiftyCupNoStraw,
         "50_cup_no_straw_full": FiftyCupNoStrawFull,
+        "50_cup_with_straw_heavy": FiftyCupWithStrawHeavy,
         "50_cup_with_straw_light": FiftyCupWithStrawLight,
         "can_of_icetea": CanOfIcetea,
         "opened_empty_can_of_icetea": OpenedEmptyCanOfIcetea,
@@ -193,6 +212,7 @@ __all__ = [
     "FiftyCup",
     "FiftyCupNoStraw",
     "FiftyCupNoStrawFull",
+    "FiftyCupWithStrawHeavy",
     "FiftyCupWithStrawLight",
     "OpenedEmptyCanOfIcetea",
     "OpenedLightCanOfIcetea",
