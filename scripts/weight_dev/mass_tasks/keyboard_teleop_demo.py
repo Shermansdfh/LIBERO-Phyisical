@@ -13,7 +13,7 @@ from typing import Any
 import numpy as np
 
 DEFAULT_BDDL_FILE = (
-    Path(__file__).resolve().parent / "bddl" / "put_opened_empty_can_in_basket.bddl"
+    Path(__file__).resolve().parent / "bddl" / "put_empty_cup_in_basket.bddl"
 )
 
 
