@@ -50,6 +50,16 @@ REGION_SAMPLERS["opened_empty_can_mass_sensing"] = REGION_SAMPLERS[
 ]
 
 
+class Empty_Cup_Mass_Sensing(Libero_Tabletop_Manipulation):
+    """Custom tabletop task registered from ``empty_cup_mass_sensing`` BDDL."""
+
+
+register_problem(Empty_Cup_Mass_Sensing)
+REGION_SAMPLERS["empty_cup_mass_sensing"] = REGION_SAMPLERS[
+    "libero_tabletop_manipulation"
+]
+
+
 class MassSensingEnv:
     """LIBERO env wrapper that reveals object masses after grip-and-lift probing."""
 
@@ -154,6 +164,7 @@ class FrankaLiberoMassSensingEnv(MassSensingEnv):
 
 __all__ = [
     "DEFAULT_BDDL_FILE",
+    "Empty_Cup_Mass_Sensing",
     "FrankaLiberoMassSensingEnv",
     "MassSensingEnv",
     "Opened_Empty_Can_Mass_Sensing",

@@ -107,7 +107,7 @@ class FiftyCupNoStrawFull(_CustomCanObject):
 
     def __init__(
         self,
-        name: str = "50_cup_no_straw",
+        name: str = "50_cup_no_straw_full",
         joints: list[dict[str, Any]] | None = None,
     ) -> None:
         super().__init__(
@@ -159,6 +159,7 @@ OBJECTS_DICT.update(
     {
         "50_cup": FiftyCup,
         "50_cup_no_straw": FiftyCupNoStraw,
+        "50_cup_no_straw_full": FiftyCupNoStrawFull,
         "can_of_icetea": CanOfIcetea,
         "opened_empty_can_of_icetea": OpenedEmptyCanOfIcetea,
         "opened_light_can_of_icetea": OpenedLightCanOfIcetea,
@@ -170,6 +171,7 @@ __all__ = [
     "CanOfIcetea",
     "FiftyCup",
     "FiftyCupNoStraw",
+    "FiftyCupNoStrawFull",
     "OpenedEmptyCanOfIcetea",
     "OpenedLightCanOfIcetea",
     "ensure_libero_import_path",

@@ -68,7 +68,7 @@
   (:obj_of_interest
     unopened_cup_1
     unopened_cup_2
-    opened_light_cup_1
+    opened_full_cup_1
     opened_empty_cup_1
     basket_1
   )
@@ -76,7 +76,7 @@
   (:init
     (On unopened_cup_1 main_table_unopened_cup_left_init_region)
     (On unopened_cup_2 main_table_unopened_cup_right_init_region)
-    (On opened_light_cup_1 main_table_opened_light_cup_init_region)
+    (On opened_full_cup_1 main_table_opened_full_cup_init_region)
     (On opened_empty_cup_1 main_table_opened_empty_cup_init_region)
     (On basket_1 main_table_basket_init_region)
   )

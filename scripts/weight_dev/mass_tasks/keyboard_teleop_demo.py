@@ -19,6 +19,7 @@ DEFAULT_BDDL_FILE = (
 
 def _load_runtime_dependencies() -> dict[str, Any]:
     try:
+        from .libero_mass_sensing import Empty_Cup_Mass_Sensing
         from .libero_mass_sensing import Opened_Empty_Can_Mass_Sensing
         from .mass_sensing_utils import MassSensingTracker, object_names_from_problem
         from .object import ensure_libero_import_path
@@ -28,6 +29,7 @@ def _load_runtime_dependencies() -> dict[str, Any]:
             sys.path.insert(0, os.fspath(current_dir))
 
         from libero_mass_sensing import (  # type: ignore[no-redef]
+            Empty_Cup_Mass_Sensing,
             Opened_Empty_Can_Mass_Sensing,
         )
         from mass_sensing_utils import (  # type: ignore[no-redef]
@@ -36,7 +38,7 @@ def _load_runtime_dependencies() -> dict[str, Any]:
         )
         from object import ensure_libero_import_path  # type: ignore[no-redef]
 
-    del Opened_Empty_Can_Mass_Sensing
+    del Empty_Cup_Mass_Sensing, Opened_Empty_Can_Mass_Sensing
     ensure_libero_import_path()
 
     import libero.libero.envs.bddl_utils as BDDLUtils

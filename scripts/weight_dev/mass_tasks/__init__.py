@@ -20,6 +20,7 @@ __all__ = [
     "DEFAULT_BDDL_FILE",
     "FiftyCup",
     "FiftyCupNoStraw",
+    "FiftyCupNoStrawFull",
     "FrankaLiberoMassSensingEnv",
     "MassSensingEnv",
     "OpenedEmptyCanOfIcetea",
