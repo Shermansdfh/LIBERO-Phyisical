@@ -58,7 +58,8 @@
   )
 
   (:objects
-    unopened_can_1 unopened_can_2 - can_of_icetea
+    unopened_can_1 - 50_cup
+    unopened_can_2 - can_of_icetea
     opened_light_can_1 - opened_light_can_of_icetea
     opened_empty_can_1 - opened_empty_can_of_icetea
     basket_1 - basket

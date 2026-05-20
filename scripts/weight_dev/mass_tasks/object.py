@@ -71,6 +71,22 @@ class CanOfIcetea(_CustomCanObject):
         self.category_name = "can_of_icetea"
 
 
+class FiftyCup(_CustomCanObject):
+    """Unopened can asset with the 50-cup visual texture."""
+
+    def __init__(
+        self,
+        name: str = "50_cup",
+        joints: list[dict[str, Any]] | None = None,
+    ) -> None:
+        super().__init__(
+            LOCAL_ASSET_DIR / "50_cup" / "50_cup.xml",
+            name=name,
+            joints=joints,
+        )
+        self.category_name = "50_cup"
+
+
 class OpenedLightCanOfIcetea(_CustomCanObject):
     """Opened can-of-icetea asset with 90% of the unopened can mass."""
 
@@ -111,6 +127,7 @@ class OpenedEmptyCanOfIcetea(_CustomCanObject):
 
 OBJECTS_DICT.update(
     {
+        "50_cup": FiftyCup,
         "can_of_icetea": CanOfIcetea,
         "opened_empty_can_of_icetea": OpenedEmptyCanOfIcetea,
         "opened_light_can_of_icetea": OpenedLightCanOfIcetea,
@@ -120,6 +137,7 @@ OBJECTS_DICT.update(
 
 __all__ = [
     "CanOfIcetea",
+    "FiftyCup",
     "OpenedEmptyCanOfIcetea",
     "OpenedLightCanOfIcetea",
     "ensure_libero_import_path",
