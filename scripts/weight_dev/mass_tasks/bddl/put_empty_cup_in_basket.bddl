@@ -24,7 +24,7 @@
     (unopened_cup_right_init_region
       (:target main_table)
       (:ranges (
-        (-0.18 -0.09 -0.14 -0.05)
+        (-0.18 0.05 -0.14 0.09)
       ))
       (:yaw_rotation (
         (0.0 0.0)
@@ -42,7 +42,7 @@
     (straw_heavy_cup_init_region
       (:target main_table)
       (:ranges (
-        (0.06 -0.09 0.10 -0.05)
+        (0.06 0.05 0.10 0.09)
       ))
       (:yaw_rotation (
         (0.0 0.0)
