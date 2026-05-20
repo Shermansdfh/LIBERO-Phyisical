@@ -1,0 +1,42 @@
+<mujoco model="50_cup_no_straw">
+  <asset>
+    <mesh name="fifty_cup_no_straw_visual" file="50blue_cup.obj" scale="1 1 1"/>
+    <mesh name="fifty_cup_no_straw_lid_visual" file="50blue_lid.obj" scale="1 1 1"/>
+    <texture name="fifty_cup_no_straw_tex" file="50.png" type="2d"/>
+    <material name="fifty_cup_no_straw_mat" texture="fifty_cup_no_straw_tex" reflectance="0.5" texrepeat="1 1" texuniform="false"/>
+  </asset>
+  <worldbody>
+    <body>
+      <body name="object">
+        <inertial pos="0 0 0.002326" mass="0.035" diaginertia="0.000776 0.000776 0.000253"/>
+        <geom
+          type="mesh"
+          mesh="fifty_cup_no_straw_visual"
+          material="fifty_cup_no_straw_mat"
+          group="1"
+          contype="0"
+          conaffinity="0"
+        />
+        <geom
+          type="mesh"
+          mesh="fifty_cup_no_straw_lid_visual"
+          material="fifty_cup_no_straw_mat"
+          group="1"
+          contype="0"
+          conaffinity="0"
+        />
+        <geom
+          type="cylinder"
+          size="0.038 0.074623"
+          pos="0 0 0.002326"
+          group="0"
+          solimp="0.998 0.998 0.001"
+          solref="0.001 1"
+        />
+      </body>
+      <site rgba="0 0 0 0" size="0.005" pos="0 0 -0.072297" name="bottom_site"/>
+      <site rgba="0 0 0 0" size="0.005" pos="0 0 0.076949" name="top_site"/>
+      <site rgba="0 0 0 0" size="0.005" pos="0.038 0 0.002326" name="horizontal_radius_site"/>
+    </body>
+  </worldbody>
+</mujoco>

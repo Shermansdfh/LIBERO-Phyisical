@@ -9,6 +9,8 @@ from .libero_mass_sensing import (
 from .object import (
     CanOfIcetea,
     FiftyCup,
+    FiftyCupNoStraw,
+    FiftyCupNoStrawFull,
     OpenedEmptyCanOfIcetea,
     OpenedLightCanOfIcetea,
 )
@@ -17,6 +19,7 @@ __all__ = [
     "CanOfIcetea",
     "DEFAULT_BDDL_FILE",
     "FiftyCup",
+    "FiftyCupNoStraw",
     "FrankaLiberoMassSensingEnv",
     "MassSensingEnv",
     "OpenedEmptyCanOfIcetea",

@@ -1,0 +1,87 @@
+(define (problem empty_cup_mass_sensing)
+  (:domain robosuite)
+  (:language identify the light cup by mass and put it into the basket)
+
+  (:regions
+    (basket_init_region
+      (:target main_table)
+      (:ranges (
+        (0.22 0.21 0.27 0.26)
+      ))
+      (:yaw_rotation (
+        (0.0 0.0)
+      ))
+    )
+    (unopened_cup_left_init_region
+      (:target main_table)
+      (:ranges (
+        (-0.30 -0.09 -0.26 -0.05)
+      ))
+      (:yaw_rotation (
+        (0.0 0.0)
+      ))
+    )
+    (unopened_cup_right_init_region
+      (:target main_table)
+      (:ranges (
+        (-0.18 -0.09 -0.14 -0.05)
+      ))
+      (:yaw_rotation (
+        (0.0 0.0)
+      ))
+    )
+    (opened_full_cup_init_region
+      (:target main_table)
+      (:ranges (
+        (-0.06 -0.09 -0.02 -0.05)
+      ))
+      (:yaw_rotation (
+        (0.0 0.0)
+      ))
+    )
+    (opened_empty_cup_init_region
+      (:target main_table)
+      (:ranges (
+        (0.06 -0.09 0.10 -0.05)
+      ))
+      (:yaw_rotation (
+        (0.0 0.0)
+      ))
+    )
+    (contain_region
+      (:target basket_1)
+    )
+  )
+
+  (:fixtures
+    main_table - table
+  )
+
+  (:objects
+    unopened_cup_1 - 50_cup
+    unopened_cup_2 - 50_cup
+    opened_full_cup_1 - 50_cup_no_straw_full
+    opened_empty_cup_1 - 50_cup_no_straw
+    basket_1 - basket
+  )
+
+  (:obj_of_interest
+    unopened_cup_1
+    unopened_cup_2
+    opened_light_cup_1
+    opened_empty_cup_1
+    basket_1
+  )
+
+  (:init
+    (On unopened_cup_1 main_table_unopened_cup_left_init_region)
+    (On unopened_cup_2 main_table_unopened_cup_right_init_region)
+    (On opened_light_cup_1 main_table_opened_light_cup_init_region)
+    (On opened_empty_cup_1 main_table_opened_empty_cup_init_region)
+    (On basket_1 main_table_basket_init_region)
+  )
+
+  (:goal
+    (And (In opened_empty_cup_1 basket_1_contain_region))
+  )
+)
