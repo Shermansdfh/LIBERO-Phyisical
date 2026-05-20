@@ -1,7 +1,7 @@
 <mujoco model="50_cup_no_straw">
   <asset>
-    <mesh name="fifty_cup_no_straw_visual" file="50blue_cup.obj" scale="1 1 1"/>
-    <mesh name="fifty_cup_no_straw_lid_visual" file="50blue_lid.obj" scale="1 1 1"/>
+    <mesh name="fifty_cup_no_straw_visual" file="50blue_cup.obj" scale="0.89 0.89 0.89"/>
+    <mesh name="fifty_cup_no_straw_lid_visual" file="50blue_lid.obj" scale="0.89 0.89 0.89"/>
     <texture name="fifty_cup_no_straw_tex" file="50.png" type="2d"/>
     <material name="fifty_cup_no_straw_mat" texture="fifty_cup_no_straw_tex" reflectance="0.5" texrepeat="1 1" texuniform="false"/>
   </asset>
@@ -27,7 +27,7 @@
         />
         <geom
           type="cylinder"
-          size="0.038 0.074623"
+          size="0.028 0.055"
           pos="0 0 0.002326"
           group="0"
           solimp="0.998 0.998 0.001"
