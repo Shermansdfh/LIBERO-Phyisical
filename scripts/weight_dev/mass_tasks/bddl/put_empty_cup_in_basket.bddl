@@ -58,8 +58,7 @@
   )
 
   (:objects
-    unopened_cup_1 - 50_cup
-    unopened_cup_2 - 50_cup
+    unopened_cup_1 unopened_cup_2 - 50_cup
     opened_full_cup_1 - 50_cup_no_straw_full
     opened_empty_cup_1 - 50_cup_no_straw
     basket_1 - basket
