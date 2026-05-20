@@ -1,6 +1,8 @@
 <mujoco model="50_cup">
   <asset>
     <mesh name="fifty_cup_visual" file="50blue_paper.obj" scale="1 1 1"/>
+    <mesh name="fifty_cup_lid_visual" file="50blue_lid.obj" scale="1 1 1"/>
+    <mesh name="fifty_cup_straw_visual" file="50blue_straw.obj" scale="1 1 1"/>
     <texture name="fifty_cup_tex" file="50.png" type="2d"/>
     <material name="fifty_cup_mat" texture="fifty_cup_tex" reflectance="0.5" texrepeat="1 1" texuniform="false"/>
   </asset>
@@ -11,6 +13,22 @@
         <geom
           type="mesh"
           mesh="fifty_cup_visual"
+          material="fifty_cup_mat"
+          group="1"
+          contype="0"
+          conaffinity="0"
+        />
+        <geom
+          type="mesh"
+          mesh="fifty_cup_lid_visual"
+          material="fifty_cup_mat"
+          group="1"
+          contype="0"
+          conaffinity="0"
+        />
+        <geom
+          type="mesh"
+          mesh="fifty_cup_straw_visual"
           material="fifty_cup_mat"
           group="1"
           contype="0"
