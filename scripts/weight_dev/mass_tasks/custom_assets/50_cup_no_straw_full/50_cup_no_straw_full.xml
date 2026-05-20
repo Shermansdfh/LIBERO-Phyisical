@@ -1,4 +1,4 @@
-<mujoco model="50_cup_no_straw">
+<mujoco model="50_cup_no_straw_full">
   <asset>
     <mesh name="fifty_cup_no_straw_full_visual" file="50blue_cup.obj" scale="1 1 1"/>
     <mesh name="fifty_cup_no_straw_lid_full_visual" file="50blue_lid.obj" scale="1 1 1"/>

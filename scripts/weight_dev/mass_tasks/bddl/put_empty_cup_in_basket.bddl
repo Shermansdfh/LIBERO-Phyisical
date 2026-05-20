@@ -1,6 +1,6 @@
 (define (problem empty_cup_mass_sensing)
   (:domain robosuite)
-  (:language identify the light cup by mass and put it into the basket)
+  (:language identify the light cup with straw by mass and put it into the basket)
 
   (:regions
     (basket_init_region
@@ -30,7 +30,7 @@
         (0.0 0.0)
       ))
     )
-    (opened_full_cup_init_region
+    (straw_light_cup_init_region
       (:target main_table)
       (:ranges (
         (-0.06 -0.09 -0.02 -0.05)
@@ -39,7 +39,7 @@
         (0.0 0.0)
       ))
     )
-    (opened_empty_cup_init_region
+    (no_straw_full_cup_init_region
       (:target main_table)
       (:ranges (
         (0.06 -0.09 0.10 -0.05)
@@ -58,29 +58,28 @@
   )
 
   (:objects
-    unopened_cup_1 unopened_cup_2 - 50_cup
-    opened_full_cup_1 - 50_cup_no_straw_full
-    opened_empty_cup_1 - 50_cup_no_straw
+    unopened_cup_1 unopened_cup_2 no_straw_full_cup_1 - 50_cup_no_straw
+    straw_light_cup_1 - 50_cup_with_straw_light
     basket_1 - basket
   )
 
   (:obj_of_interest
     unopened_cup_1
     unopened_cup_2
-    opened_full_cup_1
-    opened_empty_cup_1
+    no_straw_full_cup_1
+    straw_light_cup_1
     basket_1
   )
 
   (:init
     (On unopened_cup_1 main_table_unopened_cup_left_init_region)
     (On unopened_cup_2 main_table_unopened_cup_right_init_region)
-    (On opened_full_cup_1 main_table_opened_full_cup_init_region)
-    (On opened_empty_cup_1 main_table_opened_empty_cup_init_region)
+    (On no_straw_full_cup_1 main_table_no_straw_full_cup_init_region)
+    (On straw_light_cup_1 main_table_straw_light_cup_init_region)
     (On basket_1 main_table_basket_init_region)
   )
 
   (:goal
-    (And (In opened_empty_cup_1 basket_1_contain_region))
+    (And (In straw_light_cup_1 basket_1_contain_region))
   )
 )

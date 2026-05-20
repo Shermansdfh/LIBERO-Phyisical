@@ -11,6 +11,7 @@ from .object import (
     FiftyCup,
     FiftyCupNoStraw,
     FiftyCupNoStrawFull,
+    FiftyCupWithStrawLight,
     OpenedEmptyCanOfIcetea,
     OpenedLightCanOfIcetea,
 )
@@ -21,6 +22,7 @@ __all__ = [
     "FiftyCup",
     "FiftyCupNoStraw",
     "FiftyCupNoStrawFull",
+    "FiftyCupWithStrawLight",
     "FrankaLiberoMassSensingEnv",
     "MassSensingEnv",
     "OpenedEmptyCanOfIcetea",
